@@ -227,16 +227,15 @@ input.button {
 }
 .quizAnswer:hover{
 	cursor: pointer;
-	margin:red 2px solid;
+	box-shadow: 10px 10px 5px #888888;
+	
 }
 .quizAnswer {
 	display: inline-block;
 	margin-left: 25px;
 	margin-right: 25px;
-	border: 2px solid ;
-	background-color: red;
 }
-.questionAnswerText{
+.quizText{
 
 
 
