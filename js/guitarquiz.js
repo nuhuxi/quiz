@@ -2,11 +2,9 @@ $(document).ready(function () {
 
 	var randomNumber = '',
 		numGuesses = 0,
-		inputString,
-		theGuess,
 		isItDecimal,
-		userJustWon = false, 
-		inputIsValid = false;
+		userJustWon = false;
+
 
 
 	/*showIntro(); */
@@ -71,22 +69,7 @@ $(document).ready(function () {
 		$("#prsQuestion").hide();
 		$("#prsAnswer").hide();
 		event.preventDefault();
-  	 	/*
-		$("#gretschQuestion").hide();
-		$("#gretschAnswer").hide();
 
-		$("#fenderQuestion").show();
-		$("#fenderAnswer").show();
-
-		$("#gibsonQuestion").show();
-		$("#gibsonAnswer").show();
-
-		$("#kramerQuestion").show();
-		$("#kramerAnswer").show();
-
-		$("#prsQuestion").show();
-		$("#prsAnswer").show(); */
-		console.log("Gretsch answer button clicked");
   	});
 
   	 $("#fenderQuestionButton").click(function () {
