@@ -10,15 +10,25 @@ $(document).ready(function () {
 			answer 		}*/
 		;
 	/*Initialize the page*/
-
+	/* How can I get the page to wait until the animation is entirly loaded before it loads the first question?*/
 	hideAll();
 	showIntro();
 	resetGame();
+
 	firstQuestion();
 
 
-
-
+	var quizUnit = function (question, answer, rightAnswer) {
+		this.question = question;
+		this.answer = answer;
+		this.rightAnswer = rightAnswer;
+	}
+	 var question1  = new quizUnit('#gretschQuestion', '#gretschAnswer', '#gretschAnswerButton');
+	 var question2  = new quizUnit('#fenderQuestion', '#fenderAnswer', '#fenderAnswerButton');
+	 var question3  = new quizUnit('#gibsonQuestion', '#gibsonAnswer', '#gibsonAnswerButton');
+	 var question4  = new quizUnit('#kramerQuestion', '#kramerAnswer', '#kramerAnswerButton');
+	 var question5  = new quizUnit('#prsQuestion', '#prsAnswer', '#prsAnswerButton');
+	 console.log(question1.question);
 	
 
 	/*--- Display information modal box ---*/
@@ -27,8 +37,8 @@ $(document).ready(function () {
   	});
 
   	$("#gretschQuestionButton").click(function () {
-		$("#gretschQuestion").hide();
-		$("#gretschAnswer").show();
+		$('#gretschQuestion').hide();
+		$('#gretschAnswer').show();
   	});
 
   	 $("#gretschAnswerButton").click(function () {
@@ -112,7 +122,7 @@ function hideAll() {
   	};
 
   	function clearIntro(){
-  		$('#intro').fadeOut(1000, linear,firstQuestion());
+  		$('#intro').fadeOut(1000);
   	};
   	function firstQuestion() {
 		$("#gretschQuestion").show();
