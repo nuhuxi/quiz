@@ -37,53 +37,52 @@ $(document).ready(function () {
   	});
 
   	$("#gretschQuestionButton").click(function () {
-		$('question1.question').hide();
-		$('question1.answer').show();
+		$('#gretschQuestion').hide();
+		$('#gretschAnswer').show();
   	});
 
-  	 $('"#gretschAnswerButton"').click(function () {
-		$('question1.answer').hide();
-		$('question2.question').show();
+  	 $("#gretschAnswerButton").click(function () {
+		$("#gretschAnswer").hide();
+		$("#fenderQuestion").show();
   	});
 
   	 $("#fenderQuestionButton").click(function () {
-		$('question2.question').hide();
-		$('question2.answer').show();
+		$("#fenderQuestion").hide();
+		$("#fenderAnswer").show();
   	});
 
   	$("#fenderAnswerButton").click(function () {
-		$('question2.answer').hide();
-		$('question3.question').show();
+		$("#fenderAnswer").hide();
+		$("#gibsonQuestion").show();
   	});
 
    	$("#gibsonQuestionButton").click(function () {
-		$('question3.question').hide();
-		$('question3.answer').show();
+		$("#gibsonQuestion").hide();
+		$("#gibsonAnswer").show();
   	});
 
   	$("#gibsonAnswerButton").click(function () {
-		$('question3.answer').hide();
-		$('question4.question').show();
+		$("#gibsonAnswer").hide();
+		$("#kramerQuestion").show();
   	});
 
     $("#kramerQuestionButton").click(function () {
-		$('question4.question').hide();
-		$('question4.answer').show();
+		$("#kramerQuestion").hide();
+		$("#kramerAnswer").show();
   	});
 
   	$("#kramerAnswerButton").click(function () {
-		$('question4.answer').hide();
-		$('question5.question').show();
+		$("#kramerAnswer").hide();
+		$("#prsQuestion").show();
   	});
 
     $("#prsQuestionButton").click(function () {
-		$('question5.question').hide();
-		$('question5.answer').show();
+		$("#prsQuestion").hide();
+		$("#prsAnswer").show();
   	});
 
   	/*--- Hide information modal box ---*/
   	$("#introClose").click(function () {
-  		console.log('Clicked to close intro window');
   		$(".overlay").fadeOut(1000);
   	});
 
@@ -127,7 +126,7 @@ function hideAll() {
   	};
   	function firstQuestion() {
 		$("#gretschQuestion").show();
-
+		$("#gretschAnswer").hide();
   	};
 	event.preventDefault();  	
 });
