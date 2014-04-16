@@ -99,10 +99,16 @@ h1 {
 	display: none;
 }
 
-.close{
-	background: #5C5C5C;
+#introClose{
+	background-image: url('../images/mapletop.jpg');
 	color: #fff;
 
+}
+#introClose:hover{
+	box-shadow: 10px 10px 5px #888888;
+	background-image: url('../images/mapletop.jpg');
+	cursor: pointer;
+	
 }
 
 .content {
@@ -166,6 +172,12 @@ h1 {
 	padding: 0.5em 2em;
 	margin-bottom: 50px;
 	border-radius: 3px;
+}
+
+.nextPageButton:hover {
+	box-shadow: 10px 10px 5px #888888;
+	background-image: url('../images/mapletop.jpg');
+	color:#FFFFFF;
 }
 
 /*---------------------------------------------------------------------------------
