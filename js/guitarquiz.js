@@ -18,16 +18,16 @@ $(document).ready(function () {
 	firstQuestion();
 
 
-	var quizUnit = function (question, answer, rightAnswer) {
+	var quizUnit = function (question, answer, rightAnswer,nextQuestionButton) {
 		this.question = question;
 		this.answer = answer;
 		this.rightAnswer = rightAnswer;
 	}
-	 var question1  = new quizUnit('#gretschQuestion', '#gretschAnswer', '#gretschAnswerButton');
-	 var question2  = new quizUnit('#fenderQuestion', '#fenderAnswer', '#fenderAnswerButton');
-	 var question3  = new quizUnit('#gibsonQuestion', '#gibsonAnswer', '#gibsonAnswerButton');
-	 var question4  = new quizUnit('#kramerQuestion', '#kramerAnswer', '#kramerAnswerButton');
-	 var question5  = new quizUnit('#prsQuestion', '#prsAnswer', '#prsAnswerButton');
+	 var question1  = new quizUnit('#gretschQuestion', '#gretschAnswer', '#gretschAnswerButton', '#gretschAnswerButton');
+	 var question2  = new quizUnit('#fenderQuestion', '#fenderAnswer', '#fenderAnswerButton', '#fenderAnswerButton');
+	 var question3  = new quizUnit('#gibsonQuestion', '#gibsonAnswer', '#gibsonAnswerButton', '#gibsonAnswerButton');
+	 var question4  = new quizUnit('#kramerQuestion', '#kramerAnswer', '#kramerAnswerButton', '#kramerAnswerButton');
+	 var question5  = new quizUnit('#prsQuestion', '#prsAnswer', '#prsAnswerButton', '#prsAnswerButton');
 	 console.log(question1.question);
 	
 
@@ -36,49 +36,49 @@ $(document).ready(function () {
   		$("#intro").fadeIn(1000);
   	});
 
-  	$("#gretschQuestionButton").click(function () {
-		$('#gretschQuestion').hide();
-		$('#gretschAnswer').show();
+  	$('#gretschQuestionButton').click(function () {
+		$(question1.question).hide();
+		$(question1.answer).show();
   	});
 
   	 $("#gretschAnswerButton").click(function () {
-		$("#gretschAnswer").hide();
-		$("#fenderQuestion").show();
+		$(question1.answer).hide();
+		$(question2.question).show();
   	});
 
   	 $("#fenderQuestionButton").click(function () {
-		$("#fenderQuestion").hide();
-		$("#fenderAnswer").show();
+		$(question2.question).hide();
+		$(question2.answer).show();
   	});
 
   	$("#fenderAnswerButton").click(function () {
-		$("#fenderAnswer").hide();
-		$("#gibsonQuestion").show();
+		$(question2.answer).hide();
+		$(question3.question).show();
   	});
 
    	$("#gibsonQuestionButton").click(function () {
-		$("#gibsonQuestion").hide();
-		$("#gibsonAnswer").show();
+		$(question3.question).hide();
+		$(question3.answer).show();
   	});
 
   	$("#gibsonAnswerButton").click(function () {
-		$("#gibsonAnswer").hide();
-		$("#kramerQuestion").show();
+		$(question3.answer).hide();
+		$(question4.question).show();
   	});
 
     $("#kramerQuestionButton").click(function () {
-		$("#kramerQuestion").hide();
-		$("#kramerAnswer").show();
+		$(question4.question).hide();
+		$(question4.answer).show();
   	});
 
   	$("#kramerAnswerButton").click(function () {
-		$("#kramerAnswer").hide();
-		$("#prsQuestion").show();
+		$(question4.answer).hide();
+		$(question5.question).show();
   	});
 
     $("#prsQuestionButton").click(function () {
-		$("#prsQuestion").hide();
-		$("#prsAnswer").show();
+		$(question5.question).hide();
+		$(question5.answer).show();
   	});
 
   	/*--- Hide information modal box ---*/
