@@ -4,31 +4,25 @@ $(document).ready(function () {
 		numGuesses = 0,
 		isItDecimal,
 		userJustWon = false,
-		questionNumber = 1
-		/*theQuiz = {
-			question: 0,
-			answer 		}*/
-		;
-	/*Initialize the page*/
-	/* How can I get the page to wait until the animation is entirly loaded before it loads the first question?*/
-	hideAll();
-	showIntro();
-	resetGame();
+		questionNumber = 1;
 
-	firstQuestion();
-
-
-	var quizUnit = function (question, answer, rightAnswer,nextQuestionButton) {
+	var quizUnit = function (question, answer, rightAnswer, nextQuestionButton) {
 		this.question = question;
 		this.answer = answer;
 		this.rightAnswer = rightAnswer;
+		this.nextQuestionButton = nextQuestionButton;
 	}
 	 var question1  = new quizUnit('#gretschQuestion', '#gretschAnswer', '#gretschAnswerButton', '#gretschAnswerButton');
 	 var question2  = new quizUnit('#fenderQuestion', '#fenderAnswer', '#fenderAnswerButton', '#fenderAnswerButton');
 	 var question3  = new quizUnit('#gibsonQuestion', '#gibsonAnswer', '#gibsonAnswerButton', '#gibsonAnswerButton');
 	 var question4  = new quizUnit('#kramerQuestion', '#kramerAnswer', '#kramerAnswerButton', '#kramerAnswerButton');
 	 var question5  = new quizUnit('#prsQuestion', '#prsAnswer', '#prsAnswerButton', '#prsAnswerButton');
-	 console.log(question1.question);
+
+	hideAll();
+	showIntro();
+	resetGame();
+
+	firstQuestion();
 	
 
 	/*--- Display information modal box ---*/
@@ -41,7 +35,8 @@ $(document).ready(function () {
 		$(question1.answer).show();
   	});
 
-  	 $("#gretschAnswerButton").click(function () {
+  	 $(question1.nextQuestionButton).click(function () {
+  	 	console.log("clicked on gretsch answer button");
 		$(question1.answer).hide();
 		$(question2.question).show();
   	});
@@ -51,7 +46,7 @@ $(document).ready(function () {
 		$(question2.answer).show();
   	});
 
-  	$("#fenderAnswerButton").click(function () {
+  	$(question2.nextQuestionButton).click(function () {
 		$(question2.answer).hide();
 		$(question3.question).show();
   	});
@@ -61,7 +56,7 @@ $(document).ready(function () {
 		$(question3.answer).show();
   	});
 
-  	$("#gibsonAnswerButton").click(function () {
+  	$(question3.nextQuestionButton).click(function () {
 		$(question3.answer).hide();
 		$(question4.question).show();
   	});
@@ -71,7 +66,7 @@ $(document).ready(function () {
 		$(question4.answer).show();
   	});
 
-  	$("#kramerAnswerButton").click(function () {
+  	$(question4.nextQuestionButton).click(function () {
 		$(question4.answer).hide();
 		$(question5.question).show();
   	});
@@ -125,7 +120,7 @@ function hideAll() {
   		$('#intro').fadeOut(1000);
   	};
   	function firstQuestion() {
-		$("#gretschQuestion").show();
+		$(question1.question).show();
   	};
 	event.preventDefault();  	
 });
