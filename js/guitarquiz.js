@@ -19,9 +19,7 @@ $(document).ready(function () {
 	 var question5  = new quizUnit('#prsQuestion', '#prsAnswer', '#prsAnswerButton', '#prsAnswerButton');
 
 	hideAll();
-	showIntro();
 	resetGame();
-
 	firstQuestion();
 	
 
@@ -90,7 +88,7 @@ $(document).ready(function () {
 	/*--- FUNCTIONS ---*/
 
 	function resetGame (){
-		$("#intro").fadeIn(1000);
+		/*$("#intro").fadeIn(1000);*/
 		numGuesses = 0;
 	};
 
