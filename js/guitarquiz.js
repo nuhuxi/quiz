@@ -126,7 +126,6 @@ function hideAll() {
   	};
   	function firstQuestion() {
 		$("#gretschQuestion").show();
-		$("#gretschAnswer").hide();
   	};
 	event.preventDefault();  	
 });
