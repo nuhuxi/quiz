@@ -213,6 +213,15 @@ h2 {
 }
 
 
+#numPicks{
+	 text-align: right; 
+	 margin-right: 50px; 
+	 margin-top: -200px;
+}
+#numPicksImage {
+	margin-right: 50px;
+}
+
 .quizAnswer:hover{
 	cursor: pointer;
 	box-shadow: 10px 10px 5px #888888;
