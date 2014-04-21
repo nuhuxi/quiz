@@ -1,26 +1,38 @@
 $(document).ready(function () {
 
-	var randomNumber = '',
-		numGuesses = 0,
-		isItDecimal,
-		userJustWon = false,
-		questionNumber = 1;
+	var	userJustWon = false,
+		questionNumber = 0,
 
-	var quizUnit = function (question, answer, rightAnswer, nextQuestionButton) {
-		this.question = question;
-		this.answer = answer;
-		this.rightAnswer = rightAnswer;
-		this.nextQuestionButton = nextQuestionButton;
-	}
-	 var question1  = new quizUnit('#gretschQuestion', '#gretschAnswer', '#gretschAnswerButton', '#gretschAnswerButton');
-	 var question2  = new quizUnit('#fenderQuestion', '#fenderAnswer', '#fenderAnswerButton', '#fenderAnswerButton');
-	 var question3  = new quizUnit('#gibsonQuestion', '#gibsonAnswer', '#gibsonAnswerButton', '#gibsonAnswerButton');
-	 var question4  = new quizUnit('#kramerQuestion', '#kramerAnswer', '#kramerAnswerButton', '#kramerAnswerButton');
-	 var question5  = new quizUnit('#prsQuestion', '#prsAnswer', '#prsAnswerButton', '#prsAnswerButton');
+		quizUnits = new Array(),
+
+		currentQuestionAnswer,
+
+		questionAnswer = function (question, answer, rightAnswer, answer1,answer2,answer3,answer4,answer5) {
+			this.question = question;
+			this.answer = answer;
+			this.rightAnswer = rightAnswer;
+			this.answer1= answer1;
+			this.answer2= answer2;
+			this.answer3= answer3;
+			this.answer4= answer4;
+			this.answer5= answer5;
+
+		}
+
+		var question  = new questionAnswer(
+		 	'Question1', 
+		 	'Answer1',
+			'RightAnswer1',
+			'firstbutton',
+			'secondbutton',
+			'thirdbutton',
+			'fourthbutton',
+			'fifthbutton'
+		);
 
 	hideAll();
 	resetGame();
-	firstQuestion();
+	startGame();
 	
 
 	/*--- Display information modal box ---*/
@@ -28,51 +40,27 @@ $(document).ready(function () {
   		$("#intro").fadeIn(1000);
   	});
 
-  	$('#gretschQuestionButton').click(function () {
-		$(question1.question).hide();
-		$(question1.answer).show();
+
+  	$('.quizAnswer').click(function(){
+
+  		$('#question').slideUp();
+  		$('#answer').slideDown();
+  		$('#numPicks').remove();
+
   	});
 
-  	 $(question1.nextQuestionButton).click(function () {
-  	 	console.log("clicked on gretsch answer button");
-		$(question1.answer).hide();
-		$(question2.question).show();
+  	$('#nextQuestionButton').click(function(){
+
+  		$('#question').slideDown();
+  		$('#numPicks').append();
+  		$('#answer').slideUp();
+
   	});
 
-  	 $("#fenderQuestionButton").click(function () {
-		$(question2.question).hide();
-		$(question2.answer).show();
-  	});
 
-  	$(question2.nextQuestionButton).click(function () {
-		$(question2.answer).hide();
-		$(question3.question).show();
-  	});
 
-   	$("#gibsonQuestionButton").click(function () {
-		$(question3.question).hide();
-		$(question3.answer).show();
-  	});
 
-  	$(question3.nextQuestionButton).click(function () {
-		$(question3.answer).hide();
-		$(question4.question).show();
-  	});
-
-    $("#kramerQuestionButton").click(function () {
-		$(question4.question).hide();
-		$(question4.answer).show();
-  	});
-
-  	$(question4.nextQuestionButton).click(function () {
-		$(question4.answer).hide();
-		$(question5.question).show();
-  	});
-
-    $("#prsQuestionButton").click(function () {
-		$(question5.question).hide();
-		$(question5.answer).show();
-  	});
+  
 
   	/*--- Hide information modal box ---*/
   	$("#introClose").click(function () {
@@ -93,33 +81,28 @@ $(document).ready(function () {
 	};
 
 
-function hideAll() {
-		$("#gretschQuestion").hide();
-		$("#gretschAnswer").hide();
+	function hideAll() {
+		$("#question").hide();
+		$("#answer").hide();
 
-		$("#fenderQuestion").hide();
-		$("#fenderAnswer").hide();
-
-		$("#gibsonQuestion").hide();
-		$("#gibsonAnswer").hide();
-
-		$("#kramerQuestion").hide();
-		$("#kramerAnswer").hide();
-
-		$("#prsQuestion").hide();
-		$("#prsAnswer").hide();
+		
   	};
 
-  	function showIntro(){
+
+	function showIntro(){
   		$("#intro").fadeIn(1000);
   	};
 
-  	function clearIntro(){
+	function clearIntro(){
   		$('#intro').fadeOut(1000);
   	};
-  	function firstQuestion() {
-		$(question1.question).show();
+
+	function startGame(){
+  		$('#question').show();
   	};
+/*	function selectPickJpg(a){
+  		alert($('#numPicksImage'.src()))
+  	};*/
 	event.preventDefault();  	
 });
 
