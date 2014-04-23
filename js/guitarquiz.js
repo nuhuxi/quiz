@@ -37,18 +37,31 @@ $(document).ready(function () {
   	});
 
   	$('.quizAnswer').click(function(){
-  		
-  		$('#answer').slideDown(800, function(){
+  		console.log("Quiz answer clicked");
+  		loadAnswer();
+  		$('#question').slideUp(800, function(){
   			$('#question').remove();
-  			loadAnswer();
+  			$('#answer').slideDown(800);
   		});
-  		$('#answer').slideUp(800);
   	});
 
-  	$('#nextQuestionButton').click(function(){
-  		$('#answer').slideUp(800, loadQuestion());
-  		$('#question').slideDown(800);
+  	$('.nextQuestion').click(function(){
+  		console.log("Quiz answer clicked");
+  		loadQuestion();
+  		$('#answer').slideUp(800, function(){
+  			$('#answer').remove();
+  			$('#question').slideDown(800);
+  		});
   	});
+
+ /* 	$('.nextQuestion').click(function(){
+  		alert("Clicked next question");
+  		loadQuestion();
+  		$('#answer').slideUp(800, function(){
+  			$('#answer').remove();
+  			$('#question').slideDown(800);
+  		});
+  	}); */
 
 	/*--- FUNCTIONS ---*/
 
@@ -95,11 +108,11 @@ $(document).ready(function () {
   							pageLine17+
   							pageLine18+
   							pageLine19;
-  		console.log(pageElement1);
+
   		$('#marker').after(pageElement1);
   	};
 	function loadAnswer(){
-  		var pageLine21 = '<div id="answer">';
+  		var pageLine21 = '<div id="answer" style="display:none;">';
   		var pageLine22 = '<img id="playerImage" src="images/gretsch-guitar.jpg" alt="George Harrison"/>';
   		var pageLine23 = '<div id="numPicks">';  		
   		var pageLine24 = '<p id="numPicksText" style="font-size:24px;">5 Correct Answers!</p> <br/>';
@@ -110,7 +123,7 @@ $(document).ready(function () {
   		var pageLine29 = 'The Gretsch Musical Instrument Company built the first "Country Gentleman" guitar for Chet Atkins in 1957. ';
   		var pageLine210= ' When George Harrison played it on the Ed Sullivan Show seeing sales spike by 25% in one week.</p>';
   		var pageLine211= '<br/><br/>';
-		var pageLine211= '<button id="fenderQuestionButton" class="nextPageButton">Answer</button>';
+		var pageLine211= '<button class="nextQuestion">Next Question</button>';
   		var pageLine212= '</div>';
 
   		var pageElement2 = 	pageLine21 +
@@ -126,8 +139,8 @@ $(document).ready(function () {
   							pageLine211 +
   							pageLine212;
 
-  		console.log(pageElement2);
-  		$('#marker').after(pageElement1); 
+
+  		$('#marker').after(pageElement2); 
   	};
 
   		/* <-- the variable pageElement is constructed from attributes n the array. The 'String' of the div is concatenated 
