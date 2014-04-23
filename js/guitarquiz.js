@@ -26,11 +26,6 @@ $(document).ready(function () {
 
 	resetGame();
 
-	loadQuestion();
-
-	startGame();
-	
-
 	/*--- Display information modal box ---*/
   	$(".intro").click(function () {
   		$("#intro").fadeIn(1000);
@@ -147,21 +142,22 @@ $(document).ready(function () {
   	};
 
   	/*--- Hide information modal box ---*/
-  	$("#introClose").click(function () {
+  	$("#introClose").click(function(){
   		$(".overlay").fadeOut(1000);
   	});
 
   	/*--- User makes a guess ---*/
 
 	/*--- User wants a new game. ---*/
-  	$('.new').click(resetGame());
-      function startGame(){
-    	$('#question').show();
-    };
+  	$('.new').click(function(){
+      resetGame();
+    });
 
     function resetGame (){
-  		/*$("#intro").fadeIn(1000);*/
-  		numGuesses = 0;
+  		$("#intro").fadeIn(1000, function(){
+  		  numGuesses = 0;
+        loadQuestion();
+      });
   	};
 
     function hideAll() {
