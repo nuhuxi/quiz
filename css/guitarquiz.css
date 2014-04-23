@@ -178,7 +178,7 @@ h1 {
 .nextQuestion:hover {
 	box-shadow: 10px 10px 5px #888888;
 	background-image: url('../images/mapletop.jpg');
-	color:#FFFFFF;
+	cursor: pointer;
 }
 
 /*---------------------------------------------------------------------------------
