@@ -187,7 +187,7 @@ $(document).ready(function () {
         'The Kramer Guitar Company was founded in the late 1970s by Dennis Berardi, Gary Kramer and Phillip J. Petillo Ph.D., Master Luthier-Engineer to manufacture aluminum-necked guitars. Based in New Jersey, they produced guitars used by heavy metal and shred guitar bands in the 80s',
         '.kramer',
         'evhplaying',
-        'gmw-5150');
+        'kramerguitar');
 
       quizUnits[4] = new QuestionAnswer(
         'Almost single-handedly, Carlos Santana brought this guitar company to the fore. Its design was unique with 24 frets rather that the standard 22 frets found on Fender and Gibson guitars. The addition of 2 frets changed the harmonics of the instrument allowing Carlos and many others to sing with their guitars. <br/><br/> Who manufactured his guitar?',
