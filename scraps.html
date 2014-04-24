@@ -1,4 +1,4 @@
-/*	function loadAnswer(){ */
+	function loadAnswer(){ 
   		var pageLine21 = '<div id="answer" style="display:none;">';
       /*<-- pageLine 22 will be changed -->*/
   		var pageLine22 = '<img id="playerImage" src="images/gretsch-guitar.jpg" alt="George Harrison"/>';
@@ -34,4 +34,56 @@
 
 
   		$('#marker').after(pageElement2); 
-  	}; */
+  	}; 
+
+    function loadQuestion(){
+
+      questionNumber = 0;
+      var pageLine1 = '<div id="question">';
+            /*<-- pageLine2 will be changed -->*/
+      var pageLine2 = '<img id="playerImage" src="images/geoharrison.jpg" alt="George Harrison"/>';
+      var pageLine3 = '<div id="numPicks">'; 
+            /*<-- pageLine4 will be changed -->*/     
+      var pageLine4 = '<p id="numPicksText" style="font-size:24px;">5 Correct Answers!</p> <br/>';
+            /*<-- pageLine5 will be changed -->*/
+      var pageLine5 = '<img id="numPicksImage" src="images/pick-five.jpg"  style=" margin-right:35px;" alt="picks"/>';
+      var pageLine6 = '</div>';
+      var pageLine7 = '<br/><br/>';
+      var pageLine8 = '<p id="copyQuestion" style="padding:50px; font-size:36px;">';
+            /*<-- pageLine9 will be changed -->*/
+      var pageLine9 = '<br>Inspired by Chet Atkins, this guitar saw a sales spike after The Beatles appearance on the Ed Sullivan Show';
+            /*<-- pageLine10 will be changed -->*/
+      var pageLine10= ' in 1964. <br/><br/>Who manufactured it?</p>';
+      var pageLine11= '<br/><br/>';
+      var pageLine12= '<ul id="possibleAnswers">';
+            /*<-- pageLines 13 thru pageLine17 will be changed -->*/
+      var pageLine13= '<img src="images/logo-fender.jpg" class="quizAnswer" id="answer1" alt="Gretsch logo"/>';
+      var pageLine14= '<img src="images/logo-gretsch.jpg" class="quizAnswer" id="answer2" alt="Gretsch logo"/>';
+      var pageLine15= '<img src="images/logo-gibson.jpg" class="quizAnswer" id="answer3" alt="Gretsch logo"/>';
+      var pageLine16= '<img src="images/logo-martin.jpg" class="quizAnswer" id="answer4"alt="Gretsch logo"/>';
+      var pageLine17= '<img src="images/logo-prs.jpg" class="quizAnswer" id="answer5" alt="Gretsch logo"/> <br/><br/>';
+      var pageLine18= '</ul>';
+      var pageLine19= '</div>';
+
+      var pageElement1 =  pageLine1 +
+                pageLine2 +
+                pageLine3 +
+                pageLine4 +
+                pageLine5 +
+                pageLine6 +
+                pageLine7 +
+                pageLine8 +
+                pageLine9 +
+                pageLine10 +
+                pageLine11 +
+                pageLine12 +
+                pageLine13 +
+                pageLine14 +
+                pageLine15+
+                pageLine16+
+                pageLine17+
+                pageLine18+
+                pageLine19;
+
+      $('#marker').after(pageElement1);
+    }; 

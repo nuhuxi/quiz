@@ -1,12 +1,17 @@
 $(document).ready(function () {
 
 	var	userJustWon = false,
-	questionNumber = 0,
-  numRightAnswers = 1,
-	quizUnits = new Array(),
+	questionNumber,
+  numRightAnswers = 3,
+  quizUnits = new Array(),
   markerNumber,
   questionHTML,
   answerHTML,
+  currentUnit,
+  currentQuestion,
+  theAnswerIs,
+
+
 
 	QuestionAnswer = function (questionText, answerText, rightAnswer, playerJPG, guitarJPG) {
 			this.questionText = questionText;
@@ -25,19 +30,11 @@ $(document).ready(function () {
    /* questionText is inserted here */
     qPart5 = '</p>',
 
-    aPart1 = '<img src="images/',
-    aPart2 = '.jpg" style="position:center" alt="Pic of Guitar"/>
-          <div id="numPicks">
-            <div id="numPicks" >
-              <p id="numPicksText" class="quizText">',
-    aPart3 = 'Correct Answers!</p> <br/>
-              <img src="images/pick-',
-    aPart4 = '.jpg" style="margin-right:35px;" id="numPicksImage" style="" alt="picks"/>
-            </div>
-          <br/><br/><br/><br/>
-          </div>
-          <p style="padding:50px" class="quizText">',
-    aPart5= '';
+    aPart1 = '<div id="answerCanBeSwappedOut"><img src="images/',
+    aPart2 = '.jpg" style="position:center" alt="Pic of Guitar"/> <div id="numPicks"> <div id="numPicks">  <p id="numPicksText" class="quizText">',
+    aPart3 = ' Correct Answers!</p> <br/>  <img src="images/pick-',
+    aPart4 = '.jpg" style="margin-right:35px;" id="numPicksImage" style="" alt="picks"/>  </div> <br/><br/><br/><br/></div><p style="padding:50px" class="quizText">',
+    aPart5 = '</p></div>';
  
 	
 		
@@ -47,31 +44,40 @@ $(document).ready(function () {
 	hideAll();
 
 	resetGame();
-
-  loadQuestion();
+  console.log('before loadquestion - questionNumber is - ' + questionNumber);
+  loadQuestion(questionNumber);
 
 	/*--- Display information modal box ---*/
-  	$(".intro").click(function () {
-  		$("#intro").fadeIn(1000);
-  	});
+  $('.intro').click(function () {
+  		$('#intro').fadeIn(1000);
+  });
 
-  	$('.quizAnswer').click(function(){
+
+
+  $('.quizAnswer').click(function(){
   		console.log("Quiz answer clicked");
-
-  		$('#question0').slideUp(800, function(){
-
-  		$('#answer').slideDown(800);
+      theAnswerIs = caller.id;
+      alert(theAnswerIs);
+      currentUnit = '#question' + questionNumber; 
+      console.log('Before sliding up question 2 - the currentUnit is - ' + currentUnit);
+  		$(currentUnit).slideUp(800, function(){
+        loadAnswer();
+  		  $('#answer').slideDown(800);
   		});
+  });
+
+  $('.nextQuestion').click(function(){
+  	console.log("Next question clicked");
+    questionNumber ++;
+    loadQuestion(questionNumber);
+    currentUnit = '#question' + questionNumber; 
+
+  	$('#answer').slideUp(800, function(){
+  		$(currentUnit).slideDown(800);
+      $('#answerCanBeSwappedOut').remove();
   	});
 
-  	$('.nextQuestion').click(function(){
-  		console.log("Next question clicked");
-
-  		$('#answer').slideUp(800, function(){
-  		$('#question0').slideDown(800);
-      questionNumber ++;
-  		});
-  	});
+  });
 
 	 /*--- FUNCTIONS ---*/
 
@@ -92,10 +98,13 @@ $(document).ready(function () {
     });
 
     function resetGame (){
+      questionNumber = 0;
+      numGuesses = 0;
+
+      loadArray();
   		$("#intro").fadeIn(1000, function(){
-  		  numGuesses = 0; 
-      $("#question0").show();
-      $("#answer").hide();
+        $("#question0").show();
+        $("#answer").hide();
       }); 
   	};
 
@@ -109,44 +118,86 @@ $(document).ready(function () {
   		$("#answer").hide();
     };
 
-    function loadQuestion(){
-      question0 = new QuestionAnswer(
+    function loadQuestion(questionNumber){
+
+      currentQuestion = quizUnits[questionNumber];
+      markerNumber = '#marker' + questionNumber;
+      console.log('In loadQuestion - Question number is ' + questionNumber);
+      console.log('Here are the values of current question before first question loads: ');
+      console.log(currentQuestion);
+      questionHTML = 
+        qPart1 +
+        currentQuestion.playerJPG +
+        qPart2 +
+        numRightAnswers + 
+        qPart3 +
+        numRightAnswers +
+        qPart4 + 
+        currentQuestion.questionText +
+        qPart5;
+      $(markerNumber).after(questionHTML); 
+
+    };
+
+    function loadAnswer(questionNumber){
+      console.log('made it to load answer');
+
+        answerHTML =  aPart1 + 
+          currentQuestion.guitarJPG + 
+          aPart2 +
+          numRightAnswers +
+          aPart3 +
+          numRightAnswers + 
+          aPart4 +
+          currentQuestion.answerText;
+      console.log(answerHTML);
+
+      $('#marker5').after(answerHTML); 
+
+    };
+
+    function loadArray(){
+      /*-- If the question were loaded in a CMS this would be the place where we would load questions into the array --*/
+      quizUnits[0] = new QuestionAnswer(
         'Inspired by Chet Atkins, this guitar saw a sales spike after The Beatles appearance on the Ed Sullivan Show.',
         'The Gretsch Musical Instrument Company built the first "Country Gentleman" guitar for Chet Atkins in 1957. When George Harrison played it on the Ed Sullivan Show seeing sales spike by 25% in one week.',
         '.gretsch',
         'geoharrison',
         'gretsch-guitar');
 
-      console.log(question0.questionText);
-      console.log(question0.answerText);
-      console.log(question0.rightAnswer);
-      console.log(question0.playerJPG);
-      console.log(question0.guitarJPG);
 
-      questionHTML = 
-        qPart1 +
-        question0.playerJPG +
-        qPart2 +
-        numRightAnswers + 
-        qPart3 +
-        numRightAnswers +
-        qPart4 + 
-        question0.questionText +
-        qPart5;
-      $('#marker0').after(questionHTML); 
+      /*-- Next question --*/
+      quizUnits[1] = new QuestionAnswer(
+        'Perhaps the most famous electric guitar of the rock and roll era, the Stratocaster - or Strat - was the the choice of Jimmy Hendrix and living legends Eric Clapton, Jeff Beck, and John Mayer. It was designed by a man who never learned to play the guitar. <br/><br/>What was his last name?',
+        'Leo Fender started the Fender Musical Instrument Company in the depths of the Great Depression. His first guitar, the Broadcaster later became the Telecaster which is still by artists such as Bruce Springsteen and Brad Paisley. Leo also manufactured the first electric bass guitar.',
+        '.fender',
+        'claptonplaying',
+        'fender-strat-hardtail');
 
-    };
+      /*-- Next question --*/
+      quizUnits[2] = new QuestionAnswer(
+        'Innovative guitarist Les Paul designed the guitar that bears his name. He was a pioneer with his partner Mary Ford in the use of magnestic tape for multi-track recording. The Les Paul shot to stardom in the hands Jimmy Page and is still found on rock stages the world over. <br/><br/>What company manufactured it?',
+        'In 1902, Orville Gibson started the Gibson Guitar-Mandolin Mfg Co. Ltd. in Kalamazoo MI. Over the years Gibson made everything from mandolins to aircraft parts during WWII. The Les Paul was probably their most commercially successful guitar. Gibson Mandolins are prized today for their beauty and tone.',
+        '.gibson',
+        'pageplaying',
+        'les-paul-classic');
 
-    function loadAnswer(){
-        answerHTML =  aPart1 + 
-          gretsch-guitar + 
-          aPart2
-          3 
-          aPart3 +
-          5 + 
-          aPart4 +
-          The Gretsch Musical Instrument Company built the first "Country Gentleman" guitar for Chet Atkins in 1957. When George Harrison played it on the Ed Sullivan Show seeing sales spike by 25% in one week.<br/><br/>
-      $('#marker1').after(answerHTML); 
+      quizUnits[3] = new QuestionAnswer(
+        'Eddie Van Halen rocked the music industry in the early 80s with his astounding guitar technique. He could not have done it without the innovation of the EVH guitar. A locking "nut" made it possible to use the "whammy bar" to bend notes like no one had done before. Oh, he had great hair too.<br/><br/> Who manufactured his guitar?',
+        'The Kramer Guitar Company was founded in the late 1970s by Dennis Berardi, Gary Kramer and Phillip J. Petillo Ph.D., Master Luthier-Engineer to manufacture aluminum-necked guitars. Based in New Jersey, they produced guitars used by heavy metal and shred guitar bands in the 80s',
+        '.kramer',
+        'evhplaying',
+        'gmw-5150');
+
+      quizUnits[4] = new QuestionAnswer(
+        'Almost single-handedly, Carlos Santana brought this guitar company to the fore. Its design was unique with 24 frets rather that the standard 22 frets found on Fender and Gibson guitars. The addition of 2 frets changed the harmonics of the instrument allowing Carlos and many others to sing with their guitars. <br/><br/> Who manufactured his guitar?',
+        'Paul Reed Smith(PRS) was a Maryland based guitar player who pioneered the use of CNC machines to produce electric guitars of the highest quality. PRS now produces approximately 700 guitars a month from their factory in Stevensville, MD. <br/>Not bad for a kid who started making guitars in college.',
+        '.prs',
+        'carlos',
+        'santana-PRS');
+
+      
+
 
     };
 
