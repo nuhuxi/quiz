@@ -56,8 +56,8 @@ $(document).ready(function () {
 
   $('.quizAnswer').click(function(){
   		console.log("Quiz answer clicked");
-      theAnswerIs = caller.id;
-      alert(theAnswerIs);
+  /*    theAnswerIs = caller.id; 
+      alert(theAnswerIs); */
       currentUnit = '#question' + questionNumber; 
       console.log('Before sliding up question 2 - the currentUnit is - ' + currentUnit);
   		$(currentUnit).slideUp(800, function(){
