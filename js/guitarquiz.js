@@ -138,18 +138,14 @@ $(document).ready(function () {
     };
 
     function loadAnswer(questionNumber){
-      console.log('made it to load answer');
-        alert(currentQuestion.guitarJPG)
-        answerHTML =  aPart1 + 
-          currentQuestion.guitarJPG + 
-          aPart2 +
-          numRightAnswers +
-          aPart3 +
-          numRightAnswers + 
-          aPart4 +
-          currentQuestion.answerText;
-      console.log(answerHTML);
-
+      answerHTML =  aPart1 + 
+      currentQuestion.guitarJPG + 
+      aPart2 +
+      numRightAnswers +
+      aPart3 +
+      numRightAnswers + 
+      aPart4 +
+      currentQuestion.answerText;
       $('#marker5').after(answerHTML); 
 
     };
