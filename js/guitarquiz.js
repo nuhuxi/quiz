@@ -44,7 +44,7 @@ $(document).ready(function () {
 	hideAll();
 
 	resetGame();
-  console.log('before loadquestion - questionNumber is - ' + questionNumber);
+
   loadQuestion(questionNumber);
 
 	/*--- Display information modal box ---*/
@@ -56,8 +56,10 @@ $(document).ready(function () {
 
   $('.quizAnswer').click(function(){
       theAnswerIs = this.id; 
+      if(questionNumber===0 && theAnswerIs==='gretsch'){
+        numRightAnswers++;
+      });
       currentUnit = '#question' + questionNumber; 
-      console.log('Before sliding up question 2 - the currentUnit is - ' + currentUnit);
   		$(currentUnit).slideUp(800, function(){
         loadAnswer();
   		  $('#answer').slideDown(800);
@@ -65,16 +67,13 @@ $(document).ready(function () {
   });
 
   $('.nextQuestion').click(function(){
-  	console.log("Next question clicked");
     questionNumber ++;
     loadQuestion(questionNumber);
     currentUnit = '#question' + questionNumber; 
-
   	$('#answer').slideUp(800, function(){
   		$(currentUnit).slideDown(800);
       $('#answerCanBeSwappedOut').remove();
   	});
-
   });
 
 	 /*--- FUNCTIONS ---*/
@@ -104,7 +103,7 @@ $(document).ready(function () {
         $("#question0").show();
         $("#answer").hide();
       }); 
-  	};
+    }; 
 
     function hideAll() {
   		$("#question0").hide();
@@ -120,9 +119,6 @@ $(document).ready(function () {
 
       currentQuestion = quizUnits[questionNumber];
       markerNumber = '#marker' + questionNumber;
-      console.log('In loadQuestion - Question number is ' + questionNumber);
-      console.log('Here are the values of current question before first question loads: ');
-      console.log(currentQuestion);
       questionHTML = 
         qPart1 +
         currentQuestion.playerJPG +
@@ -134,7 +130,6 @@ $(document).ready(function () {
         currentQuestion.questionText +
         qPart5;
       $(markerNumber).after(questionHTML); 
-
     };
 
     function loadAnswer(questionNumber){
@@ -147,7 +142,6 @@ $(document).ready(function () {
       aPart4 +
       currentQuestion.answerText;
       $('#marker5').after(answerHTML); 
-
     };
 
     function loadArray(){
@@ -189,10 +183,6 @@ $(document).ready(function () {
         '.prs',
         'carlos',
         'santana-PRS');
-
-      
-
-
     };
 
     function showIntro(){
