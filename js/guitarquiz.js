@@ -20,7 +20,7 @@ $(document).ready(function () {
 			this.playerJPG = playerJPG;
 			this.guitarJPG = guitarJPG;
 		}, 
-    qPart1 = '<div id="question">     <img id="PlayerImage" src="images/',
+    qPart1 = '<div class="question">     <img id="PlayerImage" src="images/',
     /* playerImage is inserted here */
     qPart2 = '.jpg" alt="Player Image"/> <div id="numPicks"> <p id="numPicksText" style="font-size:24px;">',
     /* numRightAnswers is inserted here */
@@ -86,6 +86,19 @@ $(document).ready(function () {
   	});
   });
 
+  $('.new').click(function(){
+
+      questionNumber = 0;
+      numRightAnswers = 0;
+      $('.question').remove();
+      $('#answerCanBeSwappedOut').remove();
+      hideAll();
+      $("#intro").fadeIn(1000);
+
+      loadQuestion(questionNumber);
+      $('#question0').show();
+    });
+
 	 /*--- FUNCTIONS ---*/
 
 
@@ -101,23 +114,28 @@ $(document).ready(function () {
 
 	/*--- User wants a new game. ---*/
   	$('.new').click(function(){
-      $(currentUnit).hide();
-      $('#answerCanBeSwappedOut').remove(); 
+
+      questionNumber = 0;
+      numRightAnswers = 0;
+      $('.question').remove();
+      $('#answerCanBeSwappedOut').remove();
       hideAll();
-      resetGame();
+      $("#intro").fadeIn(1000);
+
       loadQuestion(questionNumber);
+      $('#question0').show();
     });
 
     function resetGame (){
       questionNumber = 0;
-      numGuesses = 0;
+      /*numGuesses = 0; */
       numRightAnswers = 0;
 
       loadArray();
   		$("#intro").fadeIn(1000, function(){
 
-        $("#question0").show();
-        $("#answer").hide();
+      $("#question0").show();
+      $("#answer").hide();
       }); 
     }; 
 
