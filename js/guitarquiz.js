@@ -88,7 +88,7 @@ $(document).ready(function () {
     currentUnit = '#question' + questionNumber; 
     console.log('question number is '+questionNumber);
     console.log('quizUnits.length is')
-    if (questionNumber < quizUnits.length-1) {
+    if (questionNumber < quizUnits.length) {
        $('#answer').slideUp(800, function(){
           $(currentUnit).slideDown(800);
           $('#answerCanBeSwappedOut').remove();
