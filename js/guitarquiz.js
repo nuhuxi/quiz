@@ -66,7 +66,6 @@ $(document).ready(function () {
       checkAnswer();
 
       currentUnit = '#question' + questionNumber; 
-      console.log('The currentUnit value is: ' + currentUnit);
   		$(currentUnit).slideUp(800, function(){
         loadAnswer();
   		  $('#answer').slideDown(800, function(){
@@ -76,7 +75,8 @@ $(document).ready(function () {
   		});
   });
 
-  $('.nextQuestion').click(function(){
+  $('#nextQuestion').click(function(){
+    console.log('In nextQuestion. questionNumbre is '+ questionNumber);
     questionNumber ++;
     loadQuestion(questionNumber);
     currentUnit = '#question' + questionNumber; 
@@ -149,7 +149,7 @@ $(document).ready(function () {
   		$("#answer").hide();
     };
 
-    function loadQuestion(questionNumber){
+    function loadQuestion(){
 
       currentQuestion = quizUnits[questionNumber];
       markerNumber = '#marker' + questionNumber;
@@ -166,7 +166,7 @@ $(document).ready(function () {
       $(markerNumber).after(questionHTML); 
     };
 
-    function loadAnswer(questionNumber){
+    function loadAnswer(){
       answerHTML =  aPart1 + 
       currentQuestion.guitarJPG + 
       aPart2 +
@@ -175,7 +175,15 @@ $(document).ready(function () {
       numRightAnswers + 
       aPart4 +
       currentQuestion.answerText;
+      //
+      var a = questionNumber + 1;
+
+      //
       $('#marker5').after(answerHTML); 
+      if(questionNumber+1===quizUnits.length){
+          $('#nextQuestion').remove();
+          $('#marker6').after('<img src="images/letsSeeHowYouDidButton.png" id="howDidYouDo" class="nextQuestion" alt="Game is done!"/>');
+      };
     };
 
     function loadArray(){
@@ -230,7 +238,6 @@ $(document).ready(function () {
       var checkTheAnswer = quizUnits[questionNumber];
       if(theAnswerIs===checkTheAnswer.rightAnswer){
         numRightAnswers++;
-        console.log(numRightAnswers);
       };
     };
 
