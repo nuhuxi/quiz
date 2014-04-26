@@ -74,21 +74,7 @@ $(document).ready(function () {
     currentUnit = '#question' + questionNumber; 
     console.log('In nextquestionbutton + 1 is '+ a);
     console.log('In nextquestionbutton quizUnits.length is ' + quizUnits.length)
-  /*  if (questionNumber <= quizUnits.length) {
-      console.log('inside if - questionNumber < quizUnits.length');
-       $('#answer').slideUp(800, function(){
-          $(currentUnit).slideDown(800);
-          $('#answerCanBeSwappedOut').remove();
-         })
-    }
-    else{
-        console.log('inside else - questionNumber < quizUnits.length');
-        playCliffsOfDover();
-        $('#answer').slideUp(800, function(){
-          $('#summary').slideDown(800);
-          $('#answerCanBeSwappedOut').remove();
-          });
-      } */
+
        if (questionNumber === quizUnits.length) {
         console.log('inside if - questionNumber < quizUnits.length');
         playCliffsOfDover();
@@ -107,12 +93,6 @@ $(document).ready(function () {
          })
 
 
-  /*      console.log('inside else - questionNumber < quizUnits.length');
-        playCliffsOfDover();
-        $('#answer').slideUp(800, function(){
-          $('#summary').slideDown(800);
-          $('#answerCanBeSwappedOut').remove();
-          }); */
       }
 
     });
@@ -215,17 +195,17 @@ $(document).ready(function () {
 
       currentUnit = '#question' + questionNumber;
       $(currentUnit).slideUp(800, function(){
-          if(questionNumber+1 <= quizUnits.length){
-             $('#answer').slideDown(800, function(){
-              $(currentUnit).hide();
-              $('#marker5').after(answerHTML);
-            });
-          }
-          else{
+          if(questionNumber+1 === quizUnits.length){
             $('#lastAnswer').slideDown(800, function(){
               $(currentUnit).hide();
               console.log(answerHTML);
               $('#marker6').after(answerHTML);
+            });
+          }
+          else{
+             $('#answer').slideDown(800, function(){
+              $(currentUnit).hide();
+              $('#marker5').after(answerHTML);
             });
           }
           });
