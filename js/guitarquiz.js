@@ -26,7 +26,7 @@ $(document).ready(function () {
     /* numRightAnswers is inserted here */
     qPart3 =  ' Correct Answers!</p> <br/> <img src="images/pick-',
     /* numPicksImage is inserted here */
-    qPart4 = '.jpg"  style=" margin-right:35px;" alt="picks"/> </div> <br/><br/> <p id="copyQuestion" style="padding:50px; font-size:24px;"><br>',
+    qPart4 = '.jpg"  style=" margin-right:35px;" alt="picks"/> </div> <br/><br/> <p id="copyQuestion" style="padding:50px; font-size:18px;"><br>',
    /* questionText is inserted here */
     qPart5 = '</p>',
 
