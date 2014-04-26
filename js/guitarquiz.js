@@ -57,14 +57,7 @@ $(document).ready(function () {
   $('.intro').click(function () {
   		$('#intro').fadeIn(1000);
   });
-/*  $('#howDidYouDo').click(function () {
-    console.log("Summary clicked!");
-    playCliffsOfDover();
-    $('#answer').slideUp(800, function(){
-      $('#summary').slideDown(800);
-      $('#answerCanBeSwappedOut').remove();
-    });
-  }); */
+
 
 
   $('.quizAnswer').click(function(){
@@ -199,10 +192,11 @@ $(document).ready(function () {
 
           }
           else{
-            $('#marker6').after(answerHTML);
+            
             $('#lastAnswer').slideDown(800, function(){
               $(currentUnit).hide();
               console.log(answerHTML)
+              $('#marker6').after(answerHTML);
 
             });
 
@@ -271,24 +265,24 @@ $(document).ready(function () {
         numRightAnswers++;
         switch(questionNumber){
           case 0:
-            playDriveMyCar();
+          //  playDriveMyCar();
             break;
           case 1:
-            playLayla();
+           // playLayla();
             break;
           case 2:
-            playCommunicationBreakdown();
-            break;
+          //  playCommunicationBreakdown();
+           break;
           case 3:
-            playBeatIt();
-            break;
+           // playBeatIt();
+          break;
           case 4:
-            playSantana();
+          //  playSantana();
             break;
           }
         }
         else{
-            playHayseed();
+          //  playHayseed();
         }
       };
     //};
