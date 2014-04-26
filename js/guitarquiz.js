@@ -57,37 +57,28 @@ $(document).ready(function () {
   $('.intro').click(function () {
   		$('#intro').fadeIn(1000);
   });
-  $('#howDidYouDo').click(function () {
+/*  $('#howDidYouDo').click(function () {
     console.log("Summary clicked!");
     playCliffsOfDover();
     $('#answer').slideUp(800, function(){
       $('#summary').slideDown(800);
       $('#answerCanBeSwappedOut').remove();
     });
-  });
+  }); */
 
 
   $('.quizAnswer').click(function(){
       theAnswerIs = this.id; 
-      /*-- Check to see if answer is correct. --*/
       checkAnswer();
-      currentUnit = '#question' + questionNumber; 
-  		$(currentUnit).slideUp(800, function(){
-        loadAnswer();
-  		  $('#answer').slideDown(800, function(){
-          $(currentUnit).hide();
-        });
-
-  		});
+      loadAnswer();
   });
 
-  $('#nextQuestion').click(function(){
-
+  $('#nextQuestionButton').click(function(){
     questionNumber ++;
     loadQuestion(questionNumber);
     currentUnit = '#question' + questionNumber; 
-    console.log('question number is '+questionNumber);
-    console.log('quizUnits.length is')
+    console.log('In nextquestionbutton question number is '+ questionNumber);
+    console.log('In nextquestionbutton quizUnits.length is ' + quizUnits.length)
     if (questionNumber < quizUnits.length) {
        $('#answer').slideUp(800, function(){
           $(currentUnit).slideDown(800);
@@ -101,6 +92,7 @@ $(document).ready(function () {
           $('#answerCanBeSwappedOut').remove();
           });
       }
+
     });
          
   
@@ -162,14 +154,13 @@ $(document).ready(function () {
       $("#question3").hide();
       $("#question4").hide();
       $('#summary').hide();
-      $('#holdingPlace').hide();
+    //  $('#holdingPlace').hide();
 
   		$("#answer").hide();
+      $("#lastAnswer").hide();
     };
 
     function loadQuestion(){
-      //playDriveMyCar();
-
       currentQuestion = quizUnits[questionNumber];
       markerNumber = '#marker' + questionNumber;
       questionHTML = 
@@ -194,15 +185,36 @@ $(document).ready(function () {
       numRightAnswers + 
       aPart4 +
       currentQuestion.answerText;
-      //
-      var a = questionNumber + 1;
 
-      //
-      $('#marker5').after(answerHTML); 
-      if(questionNumber+1===quizUnits.length){
-          $('#nextQuestion').remove();
-          $('#marker6').after('<img src="images/letsSeeHowYouDidButton.png" id="howDidYouDo" class="nextQuestion" alt="Game is done!"/>');
-      };
+      currentUnit = '#question' + questionNumber;
+      $(currentUnit).slideUp(800, function(){
+          console.log('In loadAnswer - questionNumber = ' + questionNumber);
+          console.log('In loadAnswer - quizUnits.length = ' + quizUnits.length);
+          if(questionNumber+1 < quizUnits.length){
+
+             $('#answer').slideDown(800, function(){
+              $(currentUnit).hide();
+              $('#marker5').after(answerHTML);
+            });
+
+          }
+          else{
+            $('#marker6').after(answerHTML);
+            $('#lastAnswer').slideDown(800, function(){
+              $(currentUnit).hide();
+              console.log(answerHTML)
+
+            });
+
+
+          }
+          
+
+
+          });
+
+  
+
     };
 
     function loadArray(){
@@ -268,18 +280,14 @@ $(document).ready(function () {
             playCommunicationBreakdown();
             break;
           case 3:
-            console.log('The Question number is '+questionNumber)
-            console.log('play Beat It!');
             playBeatIt();
             break;
           case 4:
-            console.log('Play Santana!');
             playSantana();
             break;
           }
         }
         else{
-            console.log('Play Hayseed!')
             playHayseed();
         }
       };

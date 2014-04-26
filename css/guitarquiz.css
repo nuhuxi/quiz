@@ -175,11 +175,17 @@ h1 {
 	border-radius: 3px;
 }
 
-#nextQuestion, .nextQuestion:hover {
+#nextQuestionButton, .nextQuestion:hover {
 	box-shadow: 10px 10px 5px #888888;
 	background-image: url('../images/mapletop.jpg');
 	cursor: pointer;
 }
+
+/*#letsSeeHowYouDidButton,:hover {
+	box-shadow: 10px 10px 5px #888888;
+	background-image: url('../images/mapletop.jpg');
+	cursor: pointer;
+}*/
 
 /*---------------------------------------------------------------------------------
    Game Section Styles
