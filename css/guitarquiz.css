@@ -91,7 +91,7 @@ h1 {
 .overlay {
 	width: 100%;
 	height: 100%;
-	background-image: url('../images/mapletop.jpg');
+	background-image: url('../images/mapletop.jpg'); 
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -119,7 +119,7 @@ h1 {
 	height: auto;
 	width: 600px;
 	border-radius: 3px;
-	top: 15%;
+	top: 3%;
 	margin: auto auto;
 	border: 1px solid rgba(0,0,0,0.1);
 }
@@ -185,10 +185,6 @@ h1 {
 /*---------------------------------------------------------------------------------
    Game Section Styles
 ---------------------------------------------------------------------------------*/
-h3 	{
-	font-size: .2em;
-	}
-
 
 h2 {
 	margin: 0 auto;	
