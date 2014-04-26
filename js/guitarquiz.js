@@ -66,24 +66,53 @@ $(document).ready(function () {
       loadAnswer();
   });
 
-  $('#nextQuestionButton').click(function(){
+  $('.nextQuestionButton').click(function(){
+//      $('#nextQuestionButton').click(function(){
     questionNumber ++;
-    loadQuestion(questionNumber);
+//    loadQuestion(questionNumber);
+    var a = questionNumber + 1;
     currentUnit = '#question' + questionNumber; 
-    console.log('In nextquestionbutton question number is '+ questionNumber);
+    console.log('In nextquestionbutton + 1 is '+ a);
     console.log('In nextquestionbutton quizUnits.length is ' + quizUnits.length)
-    if (questionNumber < quizUnits.length) {
+  /*  if (questionNumber <= quizUnits.length) {
+      console.log('inside if - questionNumber < quizUnits.length');
        $('#answer').slideUp(800, function(){
           $(currentUnit).slideDown(800);
           $('#answerCanBeSwappedOut').remove();
          })
     }
     else{
+        console.log('inside else - questionNumber < quizUnits.length');
         playCliffsOfDover();
         $('#answer').slideUp(800, function(){
           $('#summary').slideDown(800);
           $('#answerCanBeSwappedOut').remove();
           });
+      } */
+       if (questionNumber === quizUnits.length) {
+        console.log('inside if - questionNumber < quizUnits.length');
+        playCliffsOfDover();
+        $('#answer').slideUp(800, function(){
+          $('#summary').slideDown(800);
+          $('#answerCanBeSwappedOut').remove();
+          });
+
+    }
+    else{
+      console.log('inside else - questionNumber < quizUnits.length');
+      loadQuestion(questionNumber);
+       $('#answer').slideUp(800, function(){
+          $(currentUnit).slideDown(800);
+          $('#answerCanBeSwappedOut').remove();
+         })
+
+
+  /*      console.log('inside else - questionNumber < quizUnits.length');
+        playCliffsOfDover();
+        $('#answer').slideUp(800, function(){
+          $('#summary').slideDown(800);
+          $('#answerCanBeSwappedOut').remove();
+          }); */
       }
 
     });
@@ -125,6 +154,11 @@ $(document).ready(function () {
       $("#intro").fadeIn(1000);
       loadQuestion(questionNumber);
       $('#question0').show();
+    });
+
+    $('#letsSeeHowYouDidButton').click(function(){
+
+      alert('Click on Let see how you did!');
     });
 
     function resetGame (){
@@ -181,30 +215,19 @@ $(document).ready(function () {
 
       currentUnit = '#question' + questionNumber;
       $(currentUnit).slideUp(800, function(){
-          console.log('In loadAnswer - questionNumber = ' + questionNumber);
-          console.log('In loadAnswer - quizUnits.length = ' + quizUnits.length);
-          if(questionNumber+1 < quizUnits.length){
-
+          if(questionNumber+1 <= quizUnits.length){
              $('#answer').slideDown(800, function(){
               $(currentUnit).hide();
               $('#marker5').after(answerHTML);
             });
-
           }
           else{
-            
             $('#lastAnswer').slideDown(800, function(){
               $(currentUnit).hide();
-              console.log(answerHTML)
+              console.log(answerHTML);
               $('#marker6').after(answerHTML);
-
             });
-
-
           }
-          
-
-
           });
 
   
@@ -265,24 +288,24 @@ $(document).ready(function () {
         numRightAnswers++;
         switch(questionNumber){
           case 0:
-          //  playDriveMyCar();
+            playDriveMyCar();
             break;
           case 1:
-           // playLayla();
+            playLayla();
             break;
           case 2:
-          //  playCommunicationBreakdown();
-           break;
+            playCommunicationBreakdown();
+            break;
           case 3:
-           // playBeatIt();
-          break;
+            playBeatIt();
+            break;
           case 4:
-          //  playSantana();
+            playSantana();
             break;
           }
         }
         else{
-          //  playHayseed();
+            playHayseed();
         }
       };
     //};
