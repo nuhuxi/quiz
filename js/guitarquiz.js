@@ -1,40 +1,40 @@
 $(document).ready(function () {
 
-	var	userJustWon = false,
-	questionNumber,
-  numRightAnswers = 3,
-  quizUnits = new Array(),
-  markerNumber,
-  questionHTML,
-  answerHTML,
-  currentUnit,
-  currentQuestion = 0,
-  theAnswerIs,
+	var	userJustWon       = false,
+      questionNumber,
+      numRightAnswers   = 3,
+      quizUnits         = new Array(),
+      markerNumber,
+      questionHTML,
+      answerHTML,
+      currentUnit,
+      currentQuestion   = 0,
+      theAnswerIs,
 
 
 
-	QuestionAnswer = function (questionText, answerText, rightAnswer, playerJPG, guitarJPG) {
-			this.questionText = questionText;
-			this.answerText = answerText;
-			this.rightAnswer = rightAnswer;
-			this.playerJPG = playerJPG;
-			this.guitarJPG = guitarJPG;
-		}, 
-    qPart1 = '<div class="question">     <img id="PlayerImage" src="images/',
+	   QuestionAnswer = function (questionText, answerText, rightAnswer, playerJPG, guitarJPG) {
+			 this.questionText = questionText;
+			 this.answerText   = answerText;
+			 this.rightAnswer  = rightAnswer;
+			 this.playerJPG    = playerJPG;
+			 this.guitarJPG    = guitarJPG;
+		  }, 
+      qPart1 = '<div class="question">     <img id="PlayerImage" src="images/',
     /* playerImage is inserted here */
-    qPart2 = '.jpg" alt="Player Image"/> <div id="numPicks"> <p id="numPicksText" style="font-size:24px;">',
+      qPart2 = '.jpg" alt="Player Image"/> <div id="numPicks"> <p id="numPicksText" style="font-size:24px;">',
     /* numRightAnswers is inserted here */
-    qPart3 =  ' Correct Answers!</p> <br/> <img src="images/pick-',
+      qPart3 =  ' Correct Answers!</p> <br/> <img src="images/pick-',
     /* numPicksImage is inserted here */
-    qPart4 = '.jpg"  style=" margin-right:35px;" alt="picks"/> </div> <br/><br/> <p id="copyQuestion" style="padding:50px; font-size:18px;"><br>',
+      qPart4 = '.jpg"  style=" margin-right:35px;" alt="picks"/> </div> <br/><br/> <p id="copyQuestion" style="padding:50px; font-size:18px;"><br>',
    /* questionText is inserted here */
-    qPart5 = '</p>',
+      qPart5 = '</p>',
 
-    aPart1 = '<div id="answerCanBeSwappedOut"><img src="images/',
-    aPart2 = '.jpg" style="position:center" alt="Pic of Guitar"/> <div id="numPicks"> <div id="numPicks">  <p id="numPicksText" class="quizText">',
-    aPart3 = ' Correct Answers!</p> <br/>  <img src="images/pick-',
-    aPart4 = '.jpg" style="margin-right:35px;" id="numPicksImage" style="" alt="picks"/>  </div> <br/><br/><br/><br/></div><p style="padding:50px" class="quizText">',
-    aPart5 = '</p></div>';
+      aPart1 = '<div id="answerCanBeSwappedOut"><img src="images/',
+      aPart2 = '.jpg" style="position:center" alt="Pic of Guitar"/> <div id="numPicks"> <div id="numPicks">  <p id="numPicksText" class="quizText">',
+      aPart3 = ' Correct Answers!</p> <br/>  <img src="images/pick-',
+      aPart4 = '.jpg" style="margin-right:35px;" id="numPicksImage" style="" alt="picks"/>  </div> <br/><br/><br/><br/></div><p style="padding:50px" class="quizText">',
+      aPart5 = '</p></div>';
  
 	
 		
